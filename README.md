@@ -67,7 +67,8 @@ difference between ISOMAP and a linear approach.  We'll allow the path to travel
 through the shape of the data showing the points are related even though they
 might not actually be "close" regarding your distance metric. 
 
-![GT ISyE 6740](img/local_dist.pdf)  
+![GT ISyE 6740](img/local_dist.png)  
+
 Image from Georgia Tech ISyE 6740, Professor Xie
 
 For example, if our adjacency matrix is
