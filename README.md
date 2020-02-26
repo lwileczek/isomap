@@ -37,6 +37,15 @@ the data, or improve interpretation. We can use dimension reduction methods to
 achieve this using methods like PCA for linear data and ISOMAP for non-linear
 data.
 
+#### When would someone use dimension reduction?
+  - Under-determined system, more features than samples
+  - Data is too large for system, cannot afford more compute
+  - Reduce size of data to decrease time to solve, time sensative
+  - Removal of multi-collinearity 
+  - Can lead to improved model accuracy for regression and classification
+    [Rico-Sulayes, Antonio (2017)](https://www.researchgate.net/publication/322835219_Reducing_Vector_Space_Dimensionality_in_Automatic_Classification_for_Authorship_Attribution)
+  - Visualize the relationship between the data points when reduced to 2D or 3D
+
 ### Algorithm
 There are three steps to the ISOMAP algorithm.
 
