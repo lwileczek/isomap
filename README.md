@@ -67,7 +67,7 @@ difference between ISOMAP and a linear approach.  We'll allow the path to travel
 through the shape of the data showing the points are related even though they
 might not actually be "close" regarding your distance metric. 
 
-![GT ISyE 6740](img/local_dist.png)  
+![GT ISyE 6740](img/local_dist-1.png)  
 
 Image from Georgia Tech ISyE 6740, Professor Xie
 
@@ -89,12 +89,42 @@ Then our distance matrix `D` would be
 Because 1 can reach 3 through 2
 
 #### Step 2 Centering Matrix
+Now we'll create the centering matrix that will be use to modify the distance
+matrix `D` we just created. 
 
+![H = I - 1/n * ee^T](img/h_matrix.svg)
+
+Now, we'll use this centering matrix on our distance matrix `D` to create our
+kernel matrix, `K`
+
+![K = -1/2HD^2H](img/k_matrix.svg)
 
 #### Step 3 Eigenvalues & Eigenvectors
+Finally, we take an eigenvalue decomposition of the kernel matrix `K`. The
+largest N (in our case 2) eigenvalues and their corresponding eigenvectors
+are the projections of our original data into the new plain.
+Since eigenvectors are all linearly independent thus, we will avoid collision.
 
-### Results
-Show results compared to PCA
+### Example
+In our example we'll take over 600 images, which are 64 x 64 and black & White,
+and project them into a two dimensional space. This project can be used to
+cluster or classify the images in another machine learning model.  
+
+If we use a linear method, like PCA, we will get a reduced result, but the
+relationship between the data is not clear the eye.  
+
+![PCA Result](img/pca_faces.png)
+
+Now, by running Isomap, we can show the corresponding images by their projected
+point and see that after the projection, the points that are near each other are
+quite similar. So the direction the face is looking, that information was
+carried through the projection.  Now this smaller dataset, from (684 x 4096) to
+(684 x 2) can be used as input to a clustering method like K-means.  In
+addition, the data set is no longer under-determined. TODO: <-- add link for  
+under-determined systems.  _Likely underfittng_ 
+
+![Isomap Result](img/faces.png)
+
 
 ### Additional Resources
 

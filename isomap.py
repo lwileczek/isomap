@@ -28,8 +28,8 @@ def make_adjacency(data, dist_func="euclidean", eps=1):
 
    OUTPUT
    ------
-     adj - (ndarray) the adjacency matrix
-     dist - (ndarray) the distances of each point from one another
+     short - (ndarray) Distance matrix, the shortest path from every point to
+         every other point in the set, INF if not reachable. 
    """
    n, m = data.shape
    dist = cdist(data.T, data.T, metric=dist_func)
@@ -49,6 +49,21 @@ def isomap(d, dim=2):
     Take the shortest path distance matrix. This follows from the algorithm in
     class, create a centering matrix and apply it to the distance matrix D. Then
     we can compute the C matrix which will be used for the eigen-decomposion
+
+    Find out more 
+      1. https://en.wikipedia.org/wiki/Isomap
+      2. http://www-clmc.usc.edu/publications/T/tenenbaum-Science2000.pdf
+
+
+    INPUT
+    ------
+      d - (ndarray) Distance matrix between nodes. Should be square.
+      dim - (int) how many dimensions to reduce down too
+    
+    OUTPUT
+    ------
+      z - (ndarray) data projection into new reduced space. Each row maps back
+          to one of the origional datapoints
     """
 
     n, m = d.shape
@@ -69,13 +84,24 @@ def isomap(d, dim=2):
 
 def plot_graph(components, x, my_title="Facial Netowork Chart", filename="faces.png"):
     """
-    Plot the components and overlay some images over the chart
+    Plot the components and overlay the images that the points were derived 
+    from over the chart
 
     plotting code inspired by:
         http://benalexkeen.com/isomap-for-dimensionality-reduction-in-python/
+
+    INPUT
+    -----
+        components - (ndarray) the new reduced matrix (n x 2)
+        x - (ndarray) The original images (n x 4096)
+        filename - (str) name of the file to be saved
+        my_title - (str) title on the chart
+
+    OUTPUT
+    ------
+      Will save an image in directory "./img" with the provided filename
     """
 
-    # new stuff 
     n, m = x.shape
     fig = plt.figure()
     fig.set_size_inches(10, 10)
@@ -116,5 +142,13 @@ if __name__ == "__main__":
     # D = make_adjacency(m, eps=10.4, dist_func="euclidean")
     D = make_adjacency(m, eps=386, dist_func="cityblock")
     z = isomap(D)
-    plot_graph(z, x=m)
+    plot_graph(z, x=m, my_title="isomap resutlt")
+
+    #---
+    ## PCA
+    from sklearn.decomposition import PCA
+    pca = PCA(n_components=2)
+    z = pca.fit(m)
+    plot_graph(z.components_.T, x=m, my_title="PCA Resutl", 
+            filename="pca_faces.png")
 
