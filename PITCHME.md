@@ -1,5 +1,7 @@
 @title[INTRODUCTION]
+@snap[midpoint h1-orange]
 # ISOMAP
+@snapend
 Non-Linear Model Reduction 
 
 @snap[south-east span-20] 
@@ -8,7 +10,9 @@ Non-Linear Model Reduction
 
 ---
 
+@snap[h3-orange]
 ### TL;DR
+@snapend
 ISOMAP is a non-linear model reduction method to reduce the size and complexity
 of a dataset, projecting it onto a new plain. This method is useful for datasets
 with non-linear structure, where
@@ -17,7 +21,7 @@ with non-linear structure, where
 ---
 
 @title[Basic Questions]
-@snap[north span-100]
+@snap[north span-100 h3-orange]
 ###  Questions
 @snapend  
 
@@ -55,13 +59,15 @@ Learn](https://scikit-learn.org/stable/modules/manifold.html) for Python.
 
 
 +++
-
+@snap[h3-orange]
 ### What is this method?
+@snapend
 ISOMAP, a Non-Linear Dimension Reduction method  
 
 +++
-
-### What does it do? When should I use it?
+@snap[orange]  
+### What does it do? When should I use it?  
+@snapend  
 This projects the dataset into a reduce
 plain that shrinks the dimension while keeping _most_ of the information from
 the data.  It essentially transforms the space in which the data is
@@ -70,7 +76,9 @@ high-dimensional dataset like images, or as a pre-processing step for
 clustering.   
 
 +++
+@snap[h3-orange]
 ### What are the alternatives and how does this one compare?
+@snapend
 
 ![Manifold Learning
 comparison](https://scikit-learn.org/0.16/_images/plot_manifold_sphere_001.png)
@@ -84,7 +92,9 @@ Manifold learning methods which can be seen [here](https://en.wikipedia.org/wiki
 2018, [UMAP](https://arxiv.org/pdf/1802.03426v2.pdf)   
 
 +++
+@snap[h3-orange]
 ### What are it’s failure modes & how to you diagnose them?
+@snapend
 
 ISOMAP is dependent on thresholding or
 [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) in it's first
@@ -92,14 +102,17 @@ step to create an adjacency matrix, which can be sensitive to noisy or sparse
 data.  In addition, it can become computationally expensive.   
 
 +++
-### How Do I Call This Method?
+@snap[h3-orange]
+### How Do I Call This Method?  
+@snapend
+
 Implementations of ISOMAP can found in most programming languages, but to start
 exploring I suggest [Sci-Kit Learn](https://scikit-learn.org/stable/modules/manifold.html) for Python.
 
 ---
 @title[dimension-reduction]
-@snap[north-east span-50]  
-### Dimension Reduction  
+@snap[north-east span-60 h4-orange]  
+#### Dimension Reduction  
 @snapend
 
 @snap[west span-40 text-07]
@@ -118,7 +131,7 @@ data.
 @snap[south-east span-20] @size[0.75em]([Image Source](https://bigsnarf.wordpress.com/category/thoughts/page/4/)) @snapend
 
 +++
-@snap[north span-90]  
+@snap[north span-90 h3-orange]  
 ### When To Use
 @snapend  
 
@@ -141,14 +154,19 @@ TL;DR:
   - Visual Charting in 2 or 3 dimensions 
 
 ---
+@snap[h3-orange]
 ### Algorithm
+@snapend
+
 There are three steps to the ISOMAP algorithm.
 
 ---
-
+@title[step-1]
+@snap[h3-orange h4-orange]
 #### Step 1 Adjacency & Distance Matrices
+@snapend
 
-![GT ISyE 6740](img/local_dist-1.png)  
+![GT ISyE 6740](assets/img/local_dist-1.png)  
 
 Image from Georgia Tech ISyE 6740, Professor Xie
 +++
@@ -202,7 +220,11 @@ Then our distance matrix `D` would be
 Because 1 can reach 3 through 2
 
 ---
-#### Step 2 Centering Matrix
+@title[step-2]
+@snap[h3-orange]
+### Step 2 Centering Matrix
+@snapend  
+
 Now we'll create the centering matrix that will be use to modify the distance
 matrix `D` we just created. 
 
@@ -215,7 +237,7 @@ kernel matrix, `K`
 
 ---
 @title[step-3-eigendecomposition]
-@snap[north]  
+@snap[north span-100 h4-orange]  
 #### Step 3 Eigenvalues & Eigenvectors  
 @snapend  
 
@@ -228,15 +250,19 @@ Since eigenvectors are all linearly independent thus, we will avoid collision.
 
 ---
 @title[the-code]
+@snap[h3-orange]  
+### The Code  
+@snapend  
 
-### The Code
 The next few slides will show the different components used to implement a naive
 approach to ISOMAP.  Code in GitHub has docstrings for further explanation.
 
 +++  
 
 @title[modules]
+@snap[h3-orange]
 ### Modules
+@snapend
 
 You can always use a little help from your friends  
 
@@ -249,7 +275,9 @@ from sklearn.utils.graph_shortest_path import graph_shortest_path
 
 +++
 @title[Adjacency-matrix]
+@snap[h3-orange]
 ### Step one - Adjacency & Distance Matrices
+@snapend
 
 ```py
 def make_adjacency(data, dist_func="euclidean", eps=1):
@@ -265,7 +293,9 @@ def make_adjacency(data, dist_func="euclidean", eps=1):
 
 +++  
 @title[isomap-func]
+@snap[h3-orange]
 ### Step 2 & 3 - Center & Decompose
+@snapend
 
 ```python
 def isomap(d, dim=2):
@@ -284,7 +314,10 @@ def isomap(d, dim=2):
 
 ---
 @title[example]
+@snap[h3-orange]
 ### Example
+@snapend  
+
 In our example we'll take over 600 images, which are 64 x 64 and black & White,
 and project them into a two dimensional space. This project can be used to
 cluster or classify the images in another machine learning model.  
@@ -313,7 +346,9 @@ carried through the projection.  Now this smaller dataset, from (684 x 4096) to
 @snapend  
 
 ---
+@snap[h3-orange]
 ### Additional Resources
+@snapend
 
   - [Sci-kit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.Isomap.html)
   - [Original Paper](https://web.mit.edu/cocosci/Papers/sci_reprint.pdf)
@@ -323,13 +358,18 @@ carried through the projection.  Now this smaller dataset, from (684 x 4096) to
   - [More t-SNE](https://distill.pub/2016/misread-tsne/) Interactive visuals   
 
 +++
-Wiki articles:  
+@snap[h3-orange]
+### Wiki articles:  
+@snapend
+
   - [Nonlinear Dimensionality reduction](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction)
   - [Model Reduction](https://en.wikipedia.org/wiki/Model_order_reduction)
   - [Dimensionality Reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction)
 
 +++
-Different Distance Metrics  
+@snap[h3-orange]
+### Different Distance Metrics  
+@snapend
 
   - [Intuition - Math.net](https://numerics.mathdotnet.com/Distance.html)  
   - [SciPy Distances](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html)  
