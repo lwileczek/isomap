@@ -21,7 +21,7 @@ with non-linear structure, where
 ---
 
 @title[Basic Questions]
-@snap[north span-100 h3-orange]
+@snap[north h3-orange]
 ###  Questions
 @snapend  
 
@@ -111,7 +111,7 @@ exploring I suggest [Sci-Kit Learn](https://scikit-learn.org/stable/modules/mani
 
 ---
 @title[dimension-reduction]
-@snap[north-east span-60 h4-orange]  
+@snap[north-east span-60 h3-orange h4-orange]  
 #### Dimension Reduction  
 @snapend
 
@@ -131,7 +131,7 @@ data.
 @snap[south-east span-20] @size[0.75em]([Image Source](https://bigsnarf.wordpress.com/category/thoughts/page/4/)) @snapend
 
 +++
-@snap[north span-90 h3-orange]  
+@snap[north h3-orange]  
 ### When To Use
 @snapend  
 
@@ -162,7 +162,7 @@ There are three steps to the ISOMAP algorithm.
 
 ---
 @title[step-1]
-@snap[h3-orange h4-orange]
+@snap[h3-orange h3-orange h4-orange]
 ### Step 1 Adjacency & Distance Matrices
 @snapend
 
@@ -237,7 +237,7 @@ kernel matrix, `K`
 
 ---
 @title[step-3-eigendecomposition]
-@snap[north span-100 h4-orange]  
+@snap[north h3-orange h4-orange]  
 ### Step 3 Eigenvalues & Eigenvectors  
 @snapend  
 
