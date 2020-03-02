@@ -1,8 +1,8 @@
 @title[INTRODUCTION]
 @snap[midpoint h1-orange]
 # ISOMAP
-@snapend
 Non-Linear Model Reduction 
+@snapend
 
 @snap[south-east span-20] 
 @size[0.75em](Luke Wileczek) 
@@ -163,7 +163,7 @@ There are three steps to the ISOMAP algorithm.
 ---
 @title[step-1]
 @snap[h3-orange h4-orange]
-#### Step 1 Adjacency & Distance Matrices
+### Step 1 Adjacency & Distance Matrices
 @snapend
 
 ![GT ISyE 6740](assets/img/local_dist-1.png)  
@@ -238,7 +238,7 @@ kernel matrix, `K`
 ---
 @title[step-3-eigendecomposition]
 @snap[north span-100 h4-orange]  
-#### Step 3 Eigenvalues & Eigenvectors  
+### Step 3 Eigenvalues & Eigenvectors  
 @snapend  
 
 @snap[west text-07]
