@@ -82,7 +82,7 @@ difference between ISOMAP and a linear approach.  We'll allow the path to travel
 through the shape of the data showing the points are related even though they
 might not actually be "close" regarding your distance metric. 
 
-![GT ISyE 6740](img/local_dist-1.png)  
+![GT ISyE 6740](assets/img/local_dist-1.png)  
 
 Image from Georgia Tech ISyE 6740, Professor Xie
 
@@ -107,12 +107,12 @@ Because 1 can reach 3 through 2
 Now we'll create the centering matrix that will be use to modify the distance
 matrix `D` we just created. 
 
-![H = I - 1/n * ee^T](img/h_matrix.svg)
+![H = I - 1/n * ee^T](assets/img/h_matrix.svg)
 
 Now, we'll use this centering matrix on our distance matrix `D` to create our
 kernel matrix, `K`
 
-![K = -1/2HD^2H](img/k_matrix.svg)
+![K = -1/2HD^2H](assets/img/k_matrix.svg)
 
 #### Step 3 Eigenvalues & Eigenvectors
 Finally, we take an eigenvalue decomposition of the kernel matrix `K`. The
@@ -128,7 +128,7 @@ cluster or classify the images in another machine learning model.
 If we use a linear method, like PCA, we will get a reduced result, but the
 relationship between the data is not clear the eye.  
 
-![PCA Result](img/pca_faces.png)
+![PCA Result](assets/img/pca_faces.png)
 
 Now, by running Isomap, we can show the corresponding images by their projected
 point and see that after the projection, the points that are near each other are
@@ -136,7 +136,7 @@ quite similar. So the direction the face is looking, that information was
 carried through the projection.  Now this smaller dataset, from (684 x 4096) to
 (684 x 2) can be used as input to a clustering method like K-means.  
 
-![Isomap Result](img/faces.png)
+![Isomap Result](assets/img/faces.png)
 
 
 ### Additional Resources
