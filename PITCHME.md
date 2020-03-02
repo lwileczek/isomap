@@ -65,9 +65,10 @@ Learn](https://scikit-learn.org/stable/modules/manifold.html) for Python.
 ISOMAP, a Non-Linear Dimension Reduction method  
 
 +++
-@snap[orange]  
+@snap[h3-orange]  
 ### What does it do? When should I use it?  
-@snapend  
+@snapend    
+
 This projects the dataset into a reduce
 plain that shrinks the dimension while keeping _most_ of the information from
 the data.  It essentially transforms the space in which the data is
