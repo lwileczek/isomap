@@ -21,7 +21,7 @@ with non-linear structure, where
 ###  Questions
 @snapend  
 
-@snap[west span-40 text-06]
+@snap[west span-90 text-07]
   - *What is this method?* 
   - *What does it do? When should I use it?* 
   - *What are the alternatives and how does this one compare?* 
@@ -98,7 +98,7 @@ exploring I suggest [Sci-Kit Learn](https://scikit-learn.org/stable/modules/mani
 
 ---
 @title[dimension-reduction]
-@snap[north]  
+@snap[north-east span-50]  
 ### Dimension Reduction  
 @snapend
 
@@ -118,8 +118,8 @@ data.
 @snap[south-east span-20] @size[0.75em]([Image Source](https://bigsnarf.wordpress.com/category/thoughts/page/4/)) @snapend
 
 +++
-@snap[north]  
-### When would someone use dimension reduction?  
+@snap[north span-90]  
+### When To Use
 @snapend  
 
 @snap[west text-07]
