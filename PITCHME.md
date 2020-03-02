@@ -2,8 +2,12 @@
 # ISOMAP
 Non-Linear Model Reduction 
 
-@snap[south-east span-20] @size[0.75em](Luke Wileczek) @snapend
+@snap[south-east span-20] 
+@size[0.75em](Luke Wileczek) 
+@snapend  
+
 ---
+
 ### TL;DR
 ISOMAP is a non-linear model reduction method to reduce the size and complexity
 of a dataset, projecting it onto a new plain. This method is useful for datasets
@@ -11,9 +15,13 @@ with non-linear structure, where
 [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) and [MDS](https://en.wikipedia.org/wiki/Multidimensional_scaling) will not be appropriate. 
 
 ---
+
 @title[Basic Questions]
+@snap[north span-100]
 ###  Questions
-@snap[west span-40 text-07]
+@snapend  
+
+@snap[west span-40 text-06]
   - *What is this method?* 
   - *What does it do? When should I use it?* 
   - *What are the alternatives and how does this one compare?* 
@@ -67,7 +75,7 @@ clustering.
 ![Manifold Learning
 comparison](https://scikit-learn.org/0.16/_images/plot_manifold_sphere_001.png)
 
-@snap[south-east span-20] @size[0.75em](From SciKit-Learn Manifold Learning) @snapend
+@snap[south-east span-40] @size[0.75em](From SciKit-Learn Manifold Learning) @snapend
 
 +++
 Alternatives are PCA,
@@ -90,7 +98,9 @@ exploring I suggest [Sci-Kit Learn](https://scikit-learn.org/stable/modules/mani
 
 ---
 @title[dimension-reduction]
-### Dimension Reduction
+@snap[north]  
+### Dimension Reduction  
+@snapend
 
 @snap[west span-40 text-07]
 Dimension reduction is used in when we have very high-dimensional data, which is
@@ -108,7 +118,10 @@ data.
 @snap[south-east span-20] @size[0.75em]([Image Source](https://bigsnarf.wordpress.com/category/thoughts/page/4/)) @snapend
 
 +++
-### When would someone use dimension reduction?
+@snap[north]  
+### When would someone use dimension reduction?  
+@snapend  
+
 @snap[west text-07]
   - Under-determined system, more features than samples (Regularization)
   - Data is too large for system, cannot afford more compute
@@ -193,16 +206,18 @@ Because 1 can reach 3 through 2
 Now we'll create the centering matrix that will be use to modify the distance
 matrix `D` we just created. 
 
-![H = I - 1/n * ee^T](assets/img/h_matrix.svg)
+![H = I - 1/n * ee^T](assets/img/h_matrix.png)
 
 Now, we'll use this centering matrix on our distance matrix `D` to create our
 kernel matrix, `K`
 
-![K = -1/2HD^2H](assets/img/k_matrix.svg)
+![K = -1/2HD^2H](assets/img/k_matrix.png)
 
 ---
 @title[step-3-eigendecomposition]
-#### Step 3 Eigenvalues & Eigenvectors
+@snap[north]  
+#### Step 3 Eigenvalues & Eigenvectors  
+@snapend  
 
 @snap[west text-07]
 Finally, we take an eigenvalue decomposition of the kernel matrix `K`. The
@@ -259,7 +274,6 @@ def isomap(d, dim=2):
     d = d**2
     c = -1/(2*m) * h.dot(d).dot(h)
     evals, evecs = linalg.eig(c)
-    print(evals[:8].real)
     idx = evals.argsort()[::-1]
     evals = evals[idx[:dim]]
     evecs = evecs[:, idx[:dim]]
@@ -280,7 +294,9 @@ relationship between the data is not clear the eye.
 
 +++
 
+@snap[west span-85]
 ![PCA Result](assets/img/pca_faces.png)
+@snapend
 
 +++
 
@@ -292,8 +308,9 @@ carried through the projection.  Now this smaller dataset, from (684 x 4096) to
 
 +++
 
-![Isomap Result](assets/img/faces.png)
-
+@snap[west span-90]  
+![Isomap Result](assets/img/faces.png)  
+@snapend  
 
 ---
 ### Additional Resources
