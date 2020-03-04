@@ -13,7 +13,7 @@ Non-Linear Model Reduction
 @snap[h3-orange]
 ### TL;DR
 @snapend
-ISOMAP is a non-linear model reduction method to reduce the size and complexity
+ISOMAP is a non-linear dimension reduction method to reduce the size and complexity
 of a dataset, projecting it onto a new plane. This method is useful for datasets
 with non-linear structure, where
 [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) and [MDS](https://en.wikipedia.org/wiki/Multidimensional_scaling) will not be appropriate. 
