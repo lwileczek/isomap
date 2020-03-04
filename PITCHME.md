@@ -14,7 +14,7 @@ Non-Linear Model Reduction
 ### TL;DR
 @snapend
 ISOMAP is a non-linear model reduction method to reduce the size and complexity
-of a dataset, projecting it onto a new plain. This method is useful for datasets
+of a dataset, projecting it onto a new plane. This method is useful for datasets
 with non-linear structure, where
 [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) and [MDS](https://en.wikipedia.org/wiki/Multidimensional_scaling) will not be appropriate. 
 
@@ -38,7 +38,7 @@ Note:
 Questions:
   - *What is this method?* ISOMAP, a Non-Linear Dimension Reduction method  
   - *What does it do? When should I use it?* This projects the dataset into a reduce
-plain that shrinks the dimension while keeping _most_ of the information from
+plane that shrinks the dimension while keeping _most_ of the information from
 the data.  It essentially transforms the space in which the data is
 represented. This can be used to shrink the size of a non-linear
 high-dimensional dataset like images, or as a pre-processing step for
@@ -70,7 +70,7 @@ ISOMAP, a Non-Linear Dimension Reduction method
 @snapend    
 
 This projects the dataset into a reduce
-plain that shrinks the dimension while keeping _most_ of the information from
+plane that shrinks the dimension while keeping _most_ of the information from
 the data.  It essentially transforms the space in which the data is
 represented. This can be used to shrink the size of a non-linear
 high-dimensional dataset like images, or as a pre-processing step for
@@ -245,7 +245,7 @@ kernel matrix, `K`
 @snap[west text-07]
 Finally, we take an eigenvalue decomposition of the kernel matrix `K`. The
 largest N (in our case 2) eigenvalues and their corresponding eigenvectors
-are the projections of our original data into the new plain.
+are the projections of our original data into the new plane.
 Since eigenvectors are all linearly independent thus, we will avoid collision.
 @snapend
 
