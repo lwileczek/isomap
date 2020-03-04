@@ -71,7 +71,6 @@ def isomap(d, dim=2):
     d = d**2
     c = -1/(2*m) * h.dot(d).dot(h)
     evals, evecs = linalg.eig(c)
-    print(evals[:8].real)
     idx = evals.argsort()[::-1]
     evals = evals[idx]
     evecs = evecs[:, idx]
@@ -114,8 +113,6 @@ def plot_graph(components, x, my_title="Facial Netowork Chart", filename="faces.
     x_size = (max(components[:, 0]) - min(components[:, 0])) * 0.08
     y_size = (max(components[:, 1]) - min(components[:, 1])) * 0.08
 
-    print("max:", np.max(components))
-    print("min:", np.min(components))
     for i in range(40):
         img_num = np.random.randint(0, m)
         x0 = components[img_num, 0] - (x_size / 2.)
@@ -127,7 +124,6 @@ def plot_graph(components, x, my_title="Facial Netowork Chart", filename="faces.
 
     # Show 2D components plot
     ax.scatter(components[:, 0], components[:, 1], marker='.',alpha=0.7)
-    print(len(components))
 
     ax.set_ylabel('Up-Down Pose')
     ax.set_xlabel('Right-Left Pose')
@@ -140,15 +136,22 @@ if __name__ == "__main__":
     mat = scipy.io.loadmat('data/isomap.mat')
     m=mat['images']
     # D = make_adjacency(m, eps=10.4, dist_func="euclidean")
+    print("\nIsomap\n--------\n")
     D = make_adjacency(m, eps=386, dist_func="cityblock")
     z = isomap(D)
     plot_graph(z, x=m, my_title="isomap resutlt")
+    print("Isomap has completed, check `img` directory for results")
+    print("\n\n")
 
     #---
     ## PCA
     from sklearn.decomposition import PCA
     pca = PCA(n_components=2)
     z = pca.fit(m)
+    print("PCA\n--------\n")
+    print("Amount of variance explained:{0:.1%}".format(
+        sum(z.explained_variance_ratio_[:2])))
+    print("\n")
     plot_graph(z.components_.T, x=m, my_title="PCA Resutl", 
             filename="pca_faces.png")
 
