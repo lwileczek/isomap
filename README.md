@@ -19,6 +19,9 @@ clustering.
 and MDS for linear data and t-SNE for non-linear.  There are actually many
 Manifold learning methods which can be seen [here](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction) and newly published in
 2018, [UMAP](https://arxiv.org/pdf/1802.03426v2.pdf)   
+![Manifold Learning
+comparison](https://scikit-learn.org/0.16/_images/plot_manifold_sphere_001.png)
+
   - *What are it’s failure modes (when not to use) and how to you diagnose them?*
 ISOMAP is dependent on thresholding or
 [KNN](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) in it's first
@@ -42,6 +45,8 @@ TL;DR:
   - Feature Projection
   - Size Reduction
   - Visual Charting in 2 or 3 dimensions 
+
+![Dimensionality](assets/img/dimensionality.png)
 
 #### When would someone use dimension reduction?
   - Under-determined system, more features than samples (Regularization)
@@ -75,16 +80,18 @@ between the two nodes is set to infinity. You can tune your threshold so that
 each node has some minimum number of connections, which is what we'll use in our
 example.
 
+
+![GT ISyE 6740](assets/img/local_dist-1.png)  
+
+`Image from Georgia Tech ISyE 6740, Professor Xie`
+
+
 Once you have your adjacency matrix, we'll create our distance matrix which has
 the shortest path between each point and every other point.  This matrix will be
 symmetric since we are not creating a directed graph.  This is the main
 difference between ISOMAP and a linear approach.  We'll allow the path to travel
 through the shape of the data showing the points are related even though they
 might not actually be "close" regarding your distance metric. 
-
-![GT ISyE 6740](assets/img/local_dist-1.png)  
-
-Image from Georgia Tech ISyE 6740, Professor Xie
 
 For example, if our adjacency matrix is
 
@@ -101,7 +108,19 @@ Then our distance matrix `D` would be
  [0.2 0   0.7]
  [0.9 0.7   0]]
 ```
-Because 1 can reach 3 through 2
+Because 1 can reach 3 through 2. This can be implemented as such
+
+```py
+def make_adjacency(data, dist_func="euclidean", eps=1):
+   n, m = data.shape
+   dist = cdist(data.T, data.T, metric=dist_func)
+   adj =  np.zeros((m, m)) + np.inf
+   bln = dist < eps  # who is connected?
+   adj[bln] = dist[bln]
+   short_path = graph_shortest_path(adj)
+
+   return short_path
+```
 
 #### Step 2 Centering Matrix
 Now we'll create the centering matrix that will be use to modify the distance
@@ -119,6 +138,21 @@ Finally, we take an eigenvalue decomposition of the kernel matrix `K`. The
 largest N (in our case 2) eigenvalues and their corresponding eigenvectors
 are the projections of our original data into the new plain.
 Since eigenvectors are all linearly independent thus, we will avoid collision.
+
+```python
+def isomap(d, dim=2):
+    n, m = d.shape
+    h = np.eye(m) - (1/m)*np.ones((m, m))
+    d = d**2
+    c = -1/(2*m) * h.dot(d).dot(h)
+    evals, evecs = linalg.eig(c)
+    idx = evals.argsort()[::-1]
+    evals = evals[idx[:dim]]
+    evecs = evecs[:, idx[:dim]]
+    z = evecs.dot(np.diag(evals**(-1/2)))
+
+    return z.real
+```
 
 ### Example
 In our example we'll take over 600 images, which are 64 x 64 and black & White,
