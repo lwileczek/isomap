@@ -83,7 +83,7 @@ example.
 
 ![GT ISyE 6740](assets/img/local_dist-1.png)  
 
-`Image from Georgia Tech ISyE 6740, Professor Xie`
+[Image from Georgia Tech ISyE 6740, Professor Yao Xie](https://www.isye.gatech.edu/users/yao-xie)
 
 
 Once you have your adjacency matrix, we'll create our distance matrix which has
