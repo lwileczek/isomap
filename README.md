@@ -191,7 +191,7 @@ Different Distance Metrics
 
   - [Intuition - Math.net](https://numerics.mathdotnet.com/Distance.html)  
   - [SciPy Distances](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html)  
-  - [Sci-Kit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.DistanceMetric.html)  
+  - [Sci-Kit Learn](https://scikit-learn.org/1.1/modules/generated/sklearn.metrics.DistanceMetric.html?highlight=distance%20metric#sklearn.metrics.DistanceMetric)  
 
 
 Unrelated but [these guys](http://setosa.io/#/) in general are good.
